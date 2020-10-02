@@ -6,7 +6,8 @@ import CSS from 'csstype';
 const itemStyle: CSS.Properties = {
   width: '80px',
   height: '80px',
-  border: '1px solid',
+  borderWidth: '1px',
+  borderStyle: 'solid',
   textAlign: 'center',
   lineHeight: '80px'
 };
@@ -19,6 +20,6 @@ interface Props {
 
 export const ItemComponent: FC<Props> = ({item, onClick, id}) =>
   <div onClick={onClick} className="noselect"
-       style={{backgroundColor: item.backgroundColor, borderColor: item.borderColor, ...itemStyle}}>
+       style={{...itemStyle, backgroundColor: item.backgroundColor, borderColor: item.borderColor}}>
     {item.text ?? id}
   </div>;

@@ -6,4 +6,4 @@ const headerStyle: CSS.Properties = {
 };
 
 export const HeaderView: FC = () =>
-  <div style={{...headerStyle}}>&nbsp;</div>
+  <div style={headerStyle}>&nbsp;</div>

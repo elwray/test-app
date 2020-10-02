@@ -4,7 +4,7 @@ export interface Item {
   text?: string;
 }
 
-export function createItem(backgroundColor: string = '#AABBCC', borderColor: string = '#00FF11'): Item {
+export function createItem(backgroundColor: string = '#AABBCC', borderColor: string = '#999999'): Item {
   return {
     backgroundColor,
     borderColor

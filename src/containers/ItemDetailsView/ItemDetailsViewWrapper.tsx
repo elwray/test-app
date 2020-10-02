@@ -10,11 +10,16 @@ interface ItemDetailsParams {
 export const ItemDetailsViewWrapper: FC = () => {
   const {id} = useParams<ItemDetailsParams>();
   const {grid, updateItem} = useContext(AppContext);
-  const item = grid.items[+id];
+  const numId = +id;
+  const item = grid.items[numId];
   const history = useHistory();
 
   const onBackClickCallback = useCallback(() => history.push('/'), [history]);
-  const onSaveClickCallback = useCallback((item) => { updateItem(+id, item); history.push('/'); }, [id, updateItem, history]);
+  const onSaveClickCallback = useCallback((item) => { updateItem(numId, item); history.push('/'); }, [updateItem, history, numId]);
+
+  if (!Number.isInteger(numId) || grid.items.length <= numId) {
+    return <div>Wrong index specified</div>;
+  }
 
   return (
     <div>

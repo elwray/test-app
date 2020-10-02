@@ -6,4 +6,4 @@ const footerStyle: CSS.Properties = {
 };
 
 export const FooterView: FC = () =>
-  <div style={{...footerStyle}}>&nbsp;</div>;
+  <div style={footerStyle}>&nbsp;</div>;

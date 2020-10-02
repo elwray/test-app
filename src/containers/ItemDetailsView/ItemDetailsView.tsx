@@ -11,17 +11,27 @@ interface Props {
 
 const containerStyle: CSS.Properties = {
   border: "1px solid gray",
-  padding: '10'
+  background: "#eeeeee",
+  padding: "10px",
 };
 
 const sectionStyle: CSS.Properties = {
   display: "flex",
-  flexDirection: "column"
+  flexDirection: "column",
+  padding: "5px",
 };
 
 const inputStyle: CSS.Properties = {
-  display: "inline-block"
+  height: "25px",
 };
+
+const buttonStyle: CSS.Properties = {
+  height: "40px",
+  width: "100px",
+  margin: "5px",
+  backgroundColor: "#ccffcc",
+  border: "1px solid gray",
+}
 
 export const ItemDetailsView: FC<Props> = ({item, onBack, onSave}) => {
   const [backgroundColor, setBackgroundColor] = useState(item.backgroundColor);
@@ -42,19 +52,22 @@ export const ItemDetailsView: FC<Props> = ({item, onBack, onSave}) => {
   const validated = validateColor(backgroundColor as string) && validateColor(borderColor as string);
 
   return (
-    <div style={{...containerStyle}}>
-      <div style={{...sectionStyle}}>
+    <div style={containerStyle}>
+      <div style={sectionStyle}>
+        Background color:
         <input style={inputStyle} type="text" value={backgroundColor} onChange={setBackgroundColorCallback}/>
       </div>
-      <div style={{...sectionStyle}}>
+      <div style={sectionStyle}>
+        Border color:
         <input style={inputStyle} type="text" value={borderColor} onChange={setBorderColorCallback}/>
       </div>
-      <div style={{...sectionStyle}}>
+      <div style={sectionStyle}>
+        Text:
         <input style={inputStyle} type="text" value={text} onChange={setTextCallback}/>
       </div>
 
-      <button onClick={onBack}>Back</button>
-      <button onClick={onSaveCallback} disabled={!validated}>Save</button>
+      <button style={buttonStyle} onClick={onBack}>Back</button>
+      <button style={buttonStyle} onClick={onSaveCallback} disabled={!validated}>Save</button>
     </div>
   );
 }
